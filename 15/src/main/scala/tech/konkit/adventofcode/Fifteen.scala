@@ -1,10 +1,11 @@
+package tech.konkit.adventofcode
+
+import scala.annotation.tailrec
 
 
 object Fifteen {
 
   def main(args: Array[String]) = {
-//    val input = List(13,16,0,12,15,1)
-
     require(runTheGame(List(1,3,2)) == 1)
     require(runTheGame(List(2,1,3)) == 10)
     require(runTheGame(List(1,2,3)) == 27)
@@ -20,6 +21,7 @@ object Fifteen {
     runIteration(queue.zipWithIndex.map(v => ValueWithIndex(v._1, v._2)))
   }
 
+  @tailrec
   def runIteration(queue: List[ValueWithIndex]): Int = {
     val currentElement = queue.last
     if (queue.length == 2020) {
@@ -42,5 +44,3 @@ object Fifteen {
     }
   }
 }
-
-case class ValueWithIndex(value: Int, index: Int)
